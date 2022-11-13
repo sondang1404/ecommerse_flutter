@@ -1,3 +1,5 @@
+import 'package:ecommerse_app/config/app_router.dart';
+import 'package:ecommerse_app/config/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/screen.dart';
@@ -15,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: theme(),
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: HomeScreen.routeName,
         home: HomeScreen());
   }
 }
