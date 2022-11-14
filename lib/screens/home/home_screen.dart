@@ -19,32 +19,34 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: "Zero to Unicorn"),
       bottomNavigationBar: const CustomNavBar(),
-      body: Column(
-        children: [
-          Container(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                autoPlay: true,
-                aspectRatio: 1.5,
-                viewportFraction: 0.9,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  aspectRatio: 1.5,
+                  viewportFraction: 0.9,
+                  enlargeStrategy: CenterPageEnlargeStrategy.height,
+                ),
+                items: Category.categories
+                    .map((category) => HeroCarouselCard(category: category))
+                    .toList(),
               ),
-              items: Category.categories
-                  .map((category) => HeroCarouselCard(category: category))
-                  .toList(),
             ),
-          ),
-          const SectionTitle(title: "RECOMMENDED"),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isRecommended == true)
-                  .toList()),
-          const SectionTitle(title: "MOST POPULAR"),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular == true)
-                  .toList()),
-        ],
+            const SectionTitle(title: "RECOMMENDED"),
+            ProductCarousel(
+                products: Product.products
+                    .where((product) => product.isRecommended == true)
+                    .toList()),
+            const SectionTitle(title: "MOST POPULAR"),
+            ProductCarousel(
+                products: Product.products
+                    .where((product) => product.isPopular == true)
+                    .toList()),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'package:ecommerse_app/models/category_modal.dart';
+import 'package:ecommerse_app/models/models.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/screen.dart';
@@ -14,11 +16,11 @@ class AppRouter {
       case CartScreen.routeName:
         return CartScreen.route();
       case ProductScreen.routeName:
-        return ProductScreen.route();
+        return ProductScreen.route(product: settings.arguments as Product);
       case WishlistScreen.routeName:
         return WishlistScreen.route();
       case CatalogScreen.routeName:
-        return CatalogScreen.route();
+        return CatalogScreen.route(category: settings.arguments as Category);
       default:
         return _errorRoute();
     }
